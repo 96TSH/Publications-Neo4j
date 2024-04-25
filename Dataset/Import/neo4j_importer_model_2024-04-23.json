@@ -1,0 +1,643 @@
+{
+  "version": "1.4.0-beta.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "n0",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "caption": "Article"
+      },
+      {
+        "id": "n1",
+        "position": {
+          "x": 0,
+          "y": 300
+        },
+        "caption": "Journal"
+      },
+      {
+        "id": "n2",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "caption": "Author"
+      },
+      {
+        "id": "n3",
+        "position": {
+          "x": 300,
+          "y": 300
+        },
+        "caption": "Country"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "n0",
+        "type": "PUBLISHED_BY",
+        "fromId": "n0",
+        "toId": "n1"
+      },
+      {
+        "id": "n1",
+        "type": "AUTHORED",
+        "fromId": "n2",
+        "toId": "n0"
+      },
+      {
+        "id": "n2",
+        "type": "PUBLISHED_IN",
+        "fromId": "n0",
+        "toId": "n3"
+      }
+    ]
+  },
+  "dataModel": {
+    "version": "1.4.0-beta.0",
+    "graphSchemaRepresentation": {
+      "version": "1.0.0",
+      "graphSchema": {
+        "nodeLabels": [
+          {
+            "$id": "nl:n0",
+            "token": "Article",
+            "properties": [
+              {
+                "$id": "p:1",
+                "token": "pmid",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:2",
+                "token": "doi",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:3",
+                "token": "title",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:4",
+                "token": "citation_count",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n1",
+            "token": "Journal",
+            "properties": [
+              {
+                "$id": "p:5",
+                "token": "journal",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n2",
+            "token": "Author",
+            "properties": [
+              {
+                "$id": "p:7",
+                "token": "author",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n3",
+            "token": "Country",
+            "properties": [
+              {
+                "$id": "p:8",
+                "token": "country",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          }
+        ],
+        "relationshipTypes": [
+          {
+            "$id": "rt:n0",
+            "token": "PUBLISHED_BY",
+            "properties": [
+              {
+                "$id": "p:6",
+                "token": "published_at",
+                "type": {
+                  "type": "datetime"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "rt:n1",
+            "token": "AUTHORED",
+            "properties": [
+              {
+                "$id": "p:9",
+                "token": "weightage",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "rt:n2",
+            "token": "PUBLISHED_IN",
+            "properties": []
+          }
+        ],
+        "nodeObjectTypes": [
+          {
+            "$id": "n:n0",
+            "labels": [
+              {
+                "$ref": "#nl:n0"
+              }
+            ]
+          },
+          {
+            "$id": "n:n1",
+            "labels": [
+              {
+                "$ref": "#nl:n1"
+              }
+            ]
+          },
+          {
+            "$id": "n:n2",
+            "labels": [
+              {
+                "$ref": "#nl:n2"
+              }
+            ]
+          },
+          {
+            "$id": "n:n3",
+            "labels": [
+              {
+                "$ref": "#nl:n3"
+              }
+            ]
+          }
+        ],
+        "relationshipObjectTypes": [
+          {
+            "$id": "r:n0",
+            "type": {
+              "$ref": "#rt:n0"
+            },
+            "from": {
+              "$ref": "#n:n0"
+            },
+            "to": {
+              "$ref": "#n:n1"
+            }
+          },
+          {
+            "$id": "r:n1",
+            "type": {
+              "$ref": "#rt:n1"
+            },
+            "from": {
+              "$ref": "#n:n2"
+            },
+            "to": {
+              "$ref": "#n:n0"
+            }
+          },
+          {
+            "$id": "r:n2",
+            "type": {
+              "$ref": "#rt:n2"
+            },
+            "from": {
+              "$ref": "#n:n0"
+            },
+            "to": {
+              "$ref": "#n:n3"
+            }
+          }
+        ],
+        "constraints": [
+          {
+            "$id": "c:1",
+            "name": "pmid_Article_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n0"
+            },
+            "properties": [
+              {
+                "$ref": "#p:1"
+              }
+            ]
+          },
+          {
+            "$id": "c:2",
+            "name": "journal_Journal_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:5"
+              }
+            ]
+          },
+          {
+            "$id": "c:3",
+            "name": "author_Author_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n2"
+            },
+            "properties": [
+              {
+                "$ref": "#p:7"
+              }
+            ]
+          },
+          {
+            "$id": "c:4",
+            "name": "country_Country_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:8"
+              }
+            ]
+          }
+        ],
+        "indexes": [
+          {
+            "$id": "i:1",
+            "name": "pmid_Article_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n0"
+            },
+            "properties": [
+              {
+                "$ref": "#p:1"
+              }
+            ]
+          },
+          {
+            "$id": "i:2",
+            "name": "journal_Journal_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:5"
+              }
+            ]
+          },
+          {
+            "$id": "i:3",
+            "name": "author_Author_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n2"
+            },
+            "properties": [
+              {
+                "$ref": "#p:7"
+              }
+            ]
+          },
+          {
+            "$id": "i:4",
+            "name": "country_Country_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:8"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "graphSchemaExtensionsRepresentation": {
+      "nodeKeyProperties": [
+        {
+          "node": {
+            "$ref": "#n:n0"
+          },
+          "keyProperty": {
+            "$ref": "#p:1"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n1"
+          },
+          "keyProperty": {
+            "$ref": "#p:5"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n2"
+          },
+          "keyProperty": {
+            "$ref": "#p:7"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n3"
+          },
+          "keyProperty": {
+            "$ref": "#p:8"
+          }
+        }
+      ]
+    },
+    "graphMappingRepresentation": {
+      "dataSourceSchema": {
+        "type": "local/csv",
+        "tableSchemas": [
+          {
+            "$id": "t:1",
+            "name": "authored.csv",
+            "expanded": true,
+            "fields": [
+              {
+                "name": "pmid",
+                "type": "integer",
+                "sample": "32787442",
+                "include": true
+              },
+              {
+                "name": "author",
+                "type": "string",
+                "sample": "Narasimman Sathiamurthy",
+                "include": true
+              },
+              {
+                "name": "weightage",
+                "type": "float",
+                "sample": "0.33333",
+                "include": true
+              }
+            ]
+          },
+          {
+            "$id": "t:2",
+            "name": "smalldata.csv",
+            "expanded": true,
+            "fields": [
+              {
+                "name": "pmid",
+                "type": "integer",
+                "sample": "32787442",
+                "include": true
+              },
+              {
+                "name": "doi",
+                "type": "string",
+                "sample": "10.1177/0218492320950898",
+                "include": true
+              },
+              {
+                "name": "journal",
+                "type": "string",
+                "sample": "Asian cardiovascular & thoracic annals",
+                "include": true
+              },
+              {
+                "name": "country",
+                "type": "string",
+                "sample": "England",
+                "include": true
+              },
+              {
+                "name": "title",
+                "type": "string",
+                "sample": "Aerosol-generating procedures in thoracic surgery in the COVID-19 era in Malaysia.",
+                "include": true
+              },
+              {
+                "name": "authors",
+                "type": "string",
+                "sample": "Narasimman Sathiamurthy, Narendran Balasubbiah, Benedict Dharmaraj",
+                "include": true
+              },
+              {
+                "name": "citation_count",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "published_at",
+                "type": "datetime",
+                "sample": "2020-12-18",
+                "include": true
+              }
+            ]
+          }
+        ]
+      },
+      "nodeMappings": [
+        {
+          "node": {
+            "$ref": "#n:n0"
+          },
+          "tableSchema": {
+            "$ref": "#t:2"
+          },
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:1"
+              },
+              "fieldName": "pmid"
+            },
+            {
+              "property": {
+                "$ref": "#p:2"
+              },
+              "fieldName": "doi"
+            },
+            {
+              "property": {
+                "$ref": "#p:3"
+              },
+              "fieldName": "title"
+            },
+            {
+              "property": {
+                "$ref": "#p:4"
+              },
+              "fieldName": "citation_count"
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n2"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:7"
+              },
+              "fieldName": "author"
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n3"
+          },
+          "tableSchema": {
+            "$ref": "#t:2"
+          },
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:8"
+              },
+              "fieldName": "country"
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n1"
+          },
+          "tableSchema": {
+            "$ref": "#t:2"
+          },
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:5"
+              },
+              "fieldName": "journal"
+            }
+          ]
+        }
+      ],
+      "relationshipMappings": [
+        {
+          "relationship": {
+            "$ref": "#r:n1"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "weightage",
+              "property": {
+                "$ref": "#p:9"
+              }
+            }
+          ],
+          "fromMapping": {
+            "fieldName": "author"
+          },
+          "toMapping": {
+            "fieldName": "pmid"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n2"
+          },
+          "tableSchema": {
+            "$ref": "#t:2"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "pmid"
+          },
+          "toMapping": {
+            "fieldName": "country"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n0"
+          },
+          "tableSchema": {
+            "$ref": "#t:2"
+          },
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:6"
+              },
+              "fieldName": "published_at"
+            }
+          ],
+          "fromMapping": {
+            "fieldName": "pmid"
+          },
+          "toMapping": {
+            "fieldName": "journal"
+          }
+        }
+      ]
+    },
+    "configurations": {
+      "idsToIgnore": []
+    }
+  }
+}
