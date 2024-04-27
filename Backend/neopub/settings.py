@@ -29,12 +29,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-NEO4J_BOLT_URL = os.getenv('NEO4J_BOLT_URL', 'neo4j+s://bb8cd575.databases.neo4j.io:7687')
-NEO4J_BOLT_USER = os.getenv('NEO4J_BOLT_USER', 'neo4j')
-NEO4J_BOLT_PASSWORD = os.getenv('NEO4J_BOLT_PASSWORD', 'wlzUVKJAtoI15b-c-wUSJ7P9StzVSmEhgiQPlGFEtos')
+uri = "bfe7dc5d.databases.neo4j.io:7687"
+username = "neo4j"
+password = "cRSR4La87jlVdeVel8XuK92yn0IqtKguNGlAzHr502s"
 
-config.DATABASE_URL = f'{NEO4J_BOLT_URL}'
-config.ENCRYPTED_CONNECTION = False
+config.DATABASE_URL = 'neo4j+s://{}:{}@{}'.format(username, password, uri)
+config.ENCRYPTED_CONNECTION = True
 config.MAX_POOL_SIZE = 50
 
 # Application definition

@@ -1,17 +1,22 @@
-from neomodel import StructuredNode, StringProperty, IntegerProperty, DateProperty
-    
-class Publication(StructuredNode):
+from neomodel import StructuredNode, StringProperty, IntegerProperty, RelationshipTo, RelationshipFrom
+
+class Article(StructuredNode):
+    pmid = IntegerProperty(unique_index=True)
     doi = StringProperty(unique_index=True)
     title = StringProperty()
-    abstract = StringProperty()
     citation_count = IntegerProperty()
-    publishDate = DateProperty()
+    published_by = RelationshipTo('Journal', 'PUBLISHED_BY')
+    published_in = RelationshipTo('Country', 'PUBLISHED_IN')
+    authored_by = RelationshipFrom('Author', 'AUTHORED')
 
 class Author(StructuredNode):
-    name = StringProperty(unique_index=True)
+    author = StringProperty(unique_index=True)
+    authored_articles = RelationshipTo('Article', 'AUTHORED')
 
 class Country(StructuredNode):
-    name = StringProperty(unique_index=True)
+    country = StringProperty(unique_index=True)
+    articles_published_in = RelationshipFrom('Article', 'PUBLISHED_IN')
 
 class Journal(StructuredNode):
-    name = StringProperty(unique_index=True)
+    journal = StringProperty(unique_index=True)
+    articles_published_by = RelationshipFrom('Article', 'PUBLISHED_BY')
