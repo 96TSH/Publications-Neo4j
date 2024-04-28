@@ -12,7 +12,7 @@ export const FetchContextProvider = ({ children }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:8000/api/articles/?page=${page}&size=${size}`,
+        `http://178.128.16.149:8000/api/articles/?page=${page}&size=${size}`,
         { credentials: "include" }
       );
 
@@ -34,7 +34,7 @@ export const FetchContextProvider = ({ children }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:8000/api/articles/search/${searchTerm}?page=${page}&size=${size}`,
+        `http://178.128.16.149:8000/api/articles/search/${searchTerm}?page=${page}&size=${size}`,
         { credentials: "include" }
       );
 

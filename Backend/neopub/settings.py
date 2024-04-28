@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-lkalealk7%6_(8#y7(d@w32kqg_4ck=6m%v)q+9ybp4j9p(*z#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['157.230.47.120', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 uri = "bfe7dc5d.databases.neo4j.io:7687"
 username = "neo4j"
