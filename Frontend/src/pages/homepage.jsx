@@ -6,7 +6,6 @@ import {
   ListItemButton,
   ListItemText,
   CssBaseline,
-  ListItem,
   Divider,
   TablePagination,
   TextField,
@@ -15,7 +14,7 @@ import {
   Backdrop,
   Collapse,
 } from "@mui/material";
-import FetchContext from "../stores/fetchContext";
+import FetchContext from "../stores/fetchContext.jsx";
 
 const Homepage = () => {
   const { articlesData, fetchArticles, searchArticles, loading } =
