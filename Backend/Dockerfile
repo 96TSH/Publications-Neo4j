@@ -1,10 +1,10 @@
 # Build the Django backend
 FROM python:3.9.19
 WORKDIR /app
-COPY Backend/requirements.txt ./
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn
-COPY Backend/ ./
+COPY . .
 
 # Expose port 8000 for the application
 EXPOSE 8000
